@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EnumGenie.Sources
+namespace EnumGenie.Core.Sources
 {
     public class StaticEnumSource : IEnumSource
     {

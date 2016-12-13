@@ -2,7 +2,8 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using EnumGenie.Writers;
+using EnumGenie.Core;
+using EnumGenie.Core.EnumWriters;
 
 namespace EnumGenie.TypeScript
 {
@@ -10,7 +11,7 @@ namespace EnumGenie.TypeScript
     {
         public void WriteTo(Stream stream, EnumDefinition enumDefinition)
         {
-            var membersExceptFlagsDefault = enumDefinition.EnumType.GetCustomAttribute<FlagsAttribute>() == null
+            var membersExceptFlagsDefault = enumDefinition.EnumType.GetTypeInfo().GetCustomAttribute<FlagsAttribute>() == null
                 ? enumDefinition.Members
                 : enumDefinition.Members.Where(m => m.Value != 0).ToList();
 

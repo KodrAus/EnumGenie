@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace EnumGenie
+namespace EnumGenie.Core
 {
     public class EnumMemberDefinition
     {

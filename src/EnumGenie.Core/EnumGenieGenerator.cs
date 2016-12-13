@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using EnumGenie.Filters;
-using EnumGenie.Sources;
-using EnumGenie.Transforms;
-using EnumGenie.Writers;
+using System.Reflection;
+using EnumGenie.Core.Describers;
+using EnumGenie.Core.Filters;
+using EnumGenie.Core.Sources;
+using EnumGenie.Core.Transforms;
+using EnumGenie.Core.Writers;
 
-namespace EnumGenie
+namespace EnumGenie.Core
 {
     /// <summary>
     /// Entry point to describe how to read and outputs enums.  Configure by using
@@ -15,12 +16,15 @@ namespace EnumGenie
     /// 
     /// The configurations here mutate the genie, so don't expect to be able to stack them.
     /// </summary>
-    public class EnumGenie
+    public class EnumGenieGenerator
     {
         private readonly List<IEnumSource> _sources = new List<IEnumSource>();
         private readonly List<IEnumFilter> _filters = new List<IEnumFilter>();
         private readonly List<IWriter> _writers = new List<IWriter>();
         private readonly List<ITransform> _transforms = new List<ITransform>();
+
+        private static readonly IDescriber DefaultDescriber = new DefaultDescriber();
+        private IDescriber _describer = DefaultDescriber;
 
         /// <summary>
         /// Configures from where the enums can be read
@@ -39,10 +43,15 @@ namespace EnumGenie
         public Writer WriteTo => new Writer(this);
 
         /// <summary>
-        /// Allows a transform over a given enum definition.  Allows hefty customisation
+        /// Transforms over enum definitions.  Allows hefty customisation
         /// of the enum descriptions
         /// </summary>
         public Transform TransformBy => new Transform(this);
+
+        /// <summary>
+        /// How to get the description for an enum member
+        /// </summary>
+        public Describer DescribeUsing => new Describer(this);
 
         internal void AddSource(IEnumSource enumSource)
         {
@@ -64,6 +73,11 @@ namespace EnumGenie
             _transforms.Add(transform);
         }
 
+        public void SetDescriber(IDescriber describer)
+        {
+            _describer = describer ?? DefaultDescriber;
+        }
+
         /// <summary>
         /// Writes all the enums from the sources to the specified writers
         /// </summary>
@@ -74,7 +88,7 @@ namespace EnumGenie
                 .Distinct()
                 .ToList();
 
-            var nonEnumTypes = enumTypes.Where(e => !e.IsEnum).ToList();
+            var nonEnumTypes = enumTypes.Where(e => !e.GetTypeInfo().IsEnum).ToList();
 
             if (nonEnumTypes.Any())
                 throw new InvalidOperationException($"Can only write enum types. Fail on: {string.Join(",", nonEnumTypes.Select(e => e.Name))}");
@@ -90,9 +104,9 @@ namespace EnumGenie
             }
         }
 
-        private static EnumDefinition EnumDefinition(Type enumType)
+        private  EnumDefinition EnumDefinition(Type enumType)
         {
-            var memberDefinitions = enumType.GetEnumValues()
+            var memberDefinitions = Enum.GetValues(enumType)
                 .Cast<int>()
                 .Select(value => EnumMemberDefinition(enumType, value))
                 .ToList();
@@ -100,12 +114,12 @@ namespace EnumGenie
             return new EnumDefinition(enumType, enumType.Name, memberDefinitions);
         }
 
-        private static EnumMemberDefinition EnumMemberDefinition(Type enumType, int value)
+        private  EnumMemberDefinition EnumMemberDefinition(Type enumType, int value)
         {
             var name = Enum.GetName(enumType, value);
-            var member = enumType.GetMember(name)[0];
-            var descriptionAttribute = member.GetCustomAttributes(false).OfType<DescriptionAttribute>().FirstOrDefault();
-            var description = descriptionAttribute?.Description ?? name;
+            var member = enumType.GetTypeInfo().DeclaredMembers.Where(m => m.Name == name).First();
+            var description = _describer.GetDescription(enumType, member) 
+                ?? DefaultDescriber.GetDescription(enumType, member);
 
             return new EnumMemberDefinition(member, value, name, description);
         }

@@ -1,18 +1,18 @@
-namespace EnumGenie.Sources
+namespace EnumGenie.Core.Sources
 {
     /// <summary>
     /// Entry configurator for sources. Use extension methods for better readability
     /// </summary>
     public class Source
     {
-        private readonly EnumGenie _enumGenie;
+        private readonly EnumGenieGenerator _enumGenie;
 
-        public Source(EnumGenie enumGenie)
+        public Source(EnumGenieGenerator enumGenie)
         {
             _enumGenie = enumGenie;
         }
 
-        public EnumGenie Custom(IEnumSource source)
+        public EnumGenieGenerator Custom(IEnumSource source)
         {
             _enumGenie.AddSource(source);
             return _enumGenie;

@@ -1,6 +1,6 @@
 using System;
 
-namespace EnumGenie.Transforms
+namespace EnumGenie.Core.Transforms
 {
     public class CustomTransform : ITransform
     {

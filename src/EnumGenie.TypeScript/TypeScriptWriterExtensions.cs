@@ -1,5 +1,5 @@
 using System;
-using EnumGenie.Writers;
+using EnumGenie.Core.Writers;
 
 namespace EnumGenie.TypeScript
 {

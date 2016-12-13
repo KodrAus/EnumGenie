@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace EnumGenie.Sources
+namespace EnumGenie.Core.Sources
 {
     public interface IEnumSource
     {

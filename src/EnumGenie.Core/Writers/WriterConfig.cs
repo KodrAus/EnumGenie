@@ -1,6 +1,7 @@
 using System;
+using EnumGenie.Core.EnumWriters;
 
-namespace EnumGenie.Writers
+namespace EnumGenie.Core.Writers
 {
     /// <summary>
     /// Entry configurator for writer configuration. Use extension methods for better readability

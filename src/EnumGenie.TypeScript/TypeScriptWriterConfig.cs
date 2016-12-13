@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using EnumGenie.Writers;
+using EnumGenie.Core.EnumWriters;
 
 namespace EnumGenie.TypeScript
 {

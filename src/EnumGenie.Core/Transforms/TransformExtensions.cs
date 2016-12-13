@@ -1,13 +1,13 @@
 using System;
 
-namespace EnumGenie.Transforms
+namespace EnumGenie.Core.Transforms
 {
     public static class TransformExtensions
     {
         /// <summary>
         /// Define a custom transformation.
         /// </summary>
-        public static EnumGenie Custom(this Transform transform, Func<EnumDefinition, EnumDefinition> transformFunction)
+        public static EnumGenieGenerator Custom(this Transform transform, Func<EnumDefinition, EnumDefinition> transformFunction)
         {
             var renameTransform = new CustomTransform(transformFunction);
             return transform.Custom(renameTransform);
@@ -16,7 +16,7 @@ namespace EnumGenie.Transforms
         /// <summary>
         /// Change the name of the enum by passing in a delegate. This does not affect the members
         /// </summary>
-        public static EnumGenie RenamingEnum(this Transform transform, Func<EnumDefinition, string> transformName)
+        public static EnumGenieGenerator RenamingEnum(this Transform transform, Func<EnumDefinition, string> transformName)
         {
             var renameTransform = new CustomTransform(other => new EnumDefinition(other.EnumType, transformName(other), other.Members));
             return transform.Custom(renameTransform);

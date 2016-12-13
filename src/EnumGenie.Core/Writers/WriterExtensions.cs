@@ -1,6 +1,6 @@
 using System;
 
-namespace EnumGenie.Writers
+namespace EnumGenie.Core.Writers
 {
     public static class WriterExtensions
     {
@@ -10,7 +10,7 @@ namespace EnumGenie.Writers
         /// <param name="writer"></param>
         /// <param name="file">Path to the file to output.</param>
         /// <param name="configure">Configure the writer for this output</param>
-        public static EnumGenie File(this Writer writer, string file, Action<WriterConfig> configure)
+        public static EnumGenieGenerator File(this Writer writer, string file, Action<WriterConfig> configure)
         {
             if (configure == null) throw new ArgumentNullException(nameof(configure));
 
@@ -25,7 +25,7 @@ namespace EnumGenie.Writers
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="configure">Configure the writer for this output</param>
-        public static EnumGenie Console(this Writer writer, Action<WriterConfig> configure)
+        public static EnumGenieGenerator Console(this Writer writer, Action<WriterConfig> configure)
         {
             if (configure == null) throw new ArgumentNullException(nameof(configure));
 

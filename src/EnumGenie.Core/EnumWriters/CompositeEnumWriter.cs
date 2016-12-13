@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace EnumGenie.Writers
+namespace EnumGenie.Core.EnumWriters
 {
     public class CompositeEnumWriter : IEnumWriter
     {

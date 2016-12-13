@@ -1,6 +1,6 @@
 using System;
 
-namespace EnumGenie.Filters
+namespace EnumGenie.Core.Filters
 {
     public interface IEnumFilter
     {

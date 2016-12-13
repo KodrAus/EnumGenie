@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace EnumGenie
+namespace EnumGenie.Core
 {
     public class EnumDefinition
     {

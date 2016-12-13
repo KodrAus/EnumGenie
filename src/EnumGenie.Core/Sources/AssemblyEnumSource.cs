@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace EnumGenie.Sources
+namespace EnumGenie.Core.Sources
 {
     public class AssemblyEnumSource : IEnumSource
     {
@@ -14,6 +14,6 @@ namespace EnumGenie.Sources
             _assembly = assembly;
         }
 
-        public IEnumerable<Type> EnumTypes => _assembly.ExportedTypes.Where(t => t.IsEnum);
+        public IEnumerable<Type> EnumTypes => _assembly.ExportedTypes.Where(t => t.GetTypeInfo().IsEnum);
     }
 }

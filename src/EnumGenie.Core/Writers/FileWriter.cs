@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.IO;
+using EnumGenie.Core.EnumWriters;
 
-namespace EnumGenie.Writers
+namespace EnumGenie.Core.Writers
 {
     public class FileWriter : IWriter
     {

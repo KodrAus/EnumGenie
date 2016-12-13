@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using EnumGenie.Core.EnumWriters;
 
-namespace EnumGenie.Writers
+namespace EnumGenie.Core.Writers
 {
     public class ConsoleWriter : IWriter
     {

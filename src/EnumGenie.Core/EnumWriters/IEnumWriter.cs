@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace EnumGenie.Writers
+namespace EnumGenie.Core.EnumWriters
 {
     public interface IEnumWriter
     {

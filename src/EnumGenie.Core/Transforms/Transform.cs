@@ -1,18 +1,18 @@
-namespace EnumGenie.Transforms
+namespace EnumGenie.Core.Transforms
 {
     /// <summary>
     /// Entry configurator for transforms. Use extension methods for better readability
     /// </summary>
     public class Transform
     {
-        private readonly EnumGenie _enumGenie;
+        private readonly EnumGenieGenerator _enumGenie;
 
-        public Transform(EnumGenie enumGenie)
+        public Transform(EnumGenieGenerator enumGenie)
         {
             _enumGenie = enumGenie;
         }
 
-        public EnumGenie Custom(ITransform transform)
+        public EnumGenieGenerator Custom(ITransform transform)
         {
             _enumGenie.AddTransform(transform);
             return _enumGenie;

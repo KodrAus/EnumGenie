@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace EnumGenie.Sources
+namespace EnumGenie.Core.Sources
 {
     public static class SourceExtensions
     {
         /// <summary>
         /// Manually specify the enums
         /// </summary>
-        public static EnumGenie List(this Source source, IEnumerable<Type> enums)
+        public static EnumGenieGenerator List(this Source source, IEnumerable<Type> enums)
         {
             return source.Custom(new StaticEnumSource(enums));
         }
@@ -17,7 +17,7 @@ namespace EnumGenie.Sources
         /// <summary>
         /// Reads all enums in an assembly
         /// </summary>
-        public static EnumGenie Assembly(this Source source, Assembly assembly)
+        public static EnumGenieGenerator Assembly(this Source source, Assembly assembly)
         {
             return source.Custom(new AssemblyEnumSource(assembly));
         }

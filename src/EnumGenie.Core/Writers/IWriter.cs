@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace EnumGenie.Writers
+namespace EnumGenie.Core.Writers
 {
     public interface IWriter
     {

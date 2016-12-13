@@ -1,4 +1,4 @@
-namespace EnumGenie.Transforms
+namespace EnumGenie.Core.Transforms
 {
     public interface ITransform
     {
