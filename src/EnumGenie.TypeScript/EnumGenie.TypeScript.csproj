@@ -4,15 +4,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="**\*.cs" />
-    <EmbeddedResource Include="**\*.resx" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NETStandard.Library" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnumGenie.Core\EnumGenie.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
 </Project>
