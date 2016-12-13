@@ -7,7 +7,7 @@ build:
   publish_nuget: true
   verbosity: minimal
 before_build:
-  - dotnet restore
+  - dotnet restore src\EnumGenie.sln
 deploy:
 - provider: NuGet
   api_key:
