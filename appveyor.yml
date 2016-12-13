@@ -7,7 +7,7 @@ build:
   publish_nuget: true
   verbosity: minimal
 before_build:
-  - nuget restore
+  - dotnet restore
 deploy:
 - provider: NuGet
   api_key:
