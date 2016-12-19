@@ -8,6 +8,8 @@ build:
   verbosity: minimal
 before_build:
   - dotnet restore src\EnumGenie.sln
+build_script:
+  - msbuild "./src/EnumGenie.sln" /verbosity:minimal /t:package /p:Configuration=Release
 deploy:
 - provider: NuGet
   api_key:
