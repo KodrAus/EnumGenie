@@ -1,6 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
+    <PackageId>EnumGenie.TypeScript</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Steve Leigh</Authors>
+    <Description>TypeScript generators for EnumGenie.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes />
+    <Copyright>Copyright 2016 (c) Steve Leigh. All rights reserved.</Copyright>
+    <PackageTags>codegen TypeScript</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="**\*.cs" />
