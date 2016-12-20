@@ -25,7 +25,7 @@ echo "build: Package version suffix is $suffix"
 echo "build: Build version is $buildVersion"
 echo "build: Build version suffix is $buildSuffix" 
 
-& msbuild /t:Pack /p:Configuration=Release EnumGenie.Core/EnumGenie.Core.csproj /p:PackageVersion=$fullBuildVersion
 & msbuild /t:Pack /p:Configuration=Release EnumGenie.TypeScript/EnumGenie.TypeScript.csproj /p:PackageVersion=$fullBuildVersion
+& msbuild /t:Pack /p:Configuration=Release EnumGenie.Core/EnumGenie.Core.csproj /p:PackageVersion=$fullBuildVersion
 
 Pop-Location
