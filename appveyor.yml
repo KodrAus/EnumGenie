@@ -13,6 +13,6 @@ deploy:
   api_key:
     secure: X2uz65l0BYTO4wu2eDQK06cp6Ad7DTwwd6/7kTanRy9lf3x70B9D3mJmjnZpNtoh
   on:
-    branch: master
+    branch: /^(master|dev)$/
 artifacts:
   - path: '**\*.nupkg'

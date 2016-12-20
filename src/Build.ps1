@@ -6,7 +6,7 @@ if ($env:PROCESSOR_ARCHITECTURE -eq "AMD64")
     reg ADD "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification\*,31bf3856ad364e35" /f
 }
 
-echo "build: Build started"
+echo "build: Build $env:APPVEYOR_BUILD_VERSION started"
 
 Push-Location $PSScriptRoot
 
@@ -17,7 +17,7 @@ $revision = @{ $true = "{0:00000}" -f [convert]::ToInt32("0" + $env:APPVEYOR_BUI
 $suffix = @{ $true = ""; $false = "$($branch.Substring(0, [math]::Min(10,$branch.Length)))-$revision"}[$branch -eq "master" -and $revision -ne "local"]
 $commitHash = $(git rev-parse --short HEAD)
 $buildSuffix = @{ $true = "$($suffix)-$($commitHash)"; $false = "$($branch)-$($commitHash)" }[$suffix -ne ""]
-$buildVersion = @{ $true = $env.APPVEYOR_BUILD_VERSION; $false = "0.0.1" }[$env.APPVEYOR_BUILD_VERSION -ne $NULL]
+$buildVersion = @{ $true = $env:APPVEYOR_BUILD_VERSION; $false = "0.0.1" }[$env:APPVEYOR_BUILD_VERSION -ne $NULL]
 
 $fullBuildVersion = "$buildVersion-$buildSuffix"
 
