@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
     <PackageId>EnumGenie.TypeScript</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>0.0.1</PackageVersion>
     <Authors>Steve Leigh</Authors>
     <Description>TypeScript generators for EnumGenie.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
