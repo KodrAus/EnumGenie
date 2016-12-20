@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFrameworks>netstandard1.3;net46</TargetFrameworks>
     <PackageId>EnumGenie.Core</PackageId>
     <PackageVersion>0.0.1</PackageVersion>
     <Authors>Steve Leigh</Authors>
