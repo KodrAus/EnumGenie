@@ -17,8 +17,8 @@ build:
 before_build:
   - dotnet restore src\EnumGenie.sln
 build_script:
-  - msbuild "./src/EnumGenie.Core/EnumGenie.Core.csproj" /verbosity:minimal /t:pack /p:Configuration=Release
-  - msbuild "./src/EnumGenie.TypeScript/EnumGenie.TypeScript.csproj" /verbosity:minimal /t:pack /p:Configuration=Release
+  - msbuild "./src/EnumGenie.Core/EnumGenie.Core.csproj" /verbosity:minimal /t:pack /p:Configuration=Release /p:PackageVersion={version}
+  - msbuild "./src/EnumGenie.TypeScript/EnumGenie.TypeScript.csproj" /verbosity:minimal /t:pack /p:Configuration=Release /p:PackageVersion={version}
 deploy:
 - provider: NuGet
   api_key:
